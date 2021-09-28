@@ -51,7 +51,7 @@ class SixPLL(object):
             print("Writing frequencies to EEPROM")
             print("-----------------------------")
         else:
-            print("Channel or Frequency mismatch. Aborting...")
+            print("Channel or Frequency typo. Aborting...")
             sys.exit(1)
 
         self.__sendReadCmd__()
