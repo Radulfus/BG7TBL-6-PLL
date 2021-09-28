@@ -23,19 +23,13 @@ args = parser.parse_args()
 print("BG7TBL 6-PLL tool")
 
 try:
-    if args.port:
-        port = args.port
-    else:
-        port = PORT
-
-# write frequency to EEPROM else read and print frequencies from EEPROM
     if args.write:
-        myPLL = SixPLL(port, args.write)
+        myPLL = SixPLL(args.port, args.write)
         myPLL.write()
         myPLL.print()
     else:
         if args.list:
-            myPLL = SixPLL(port, args.write)
+            myPLL = SixPLL(args.port, args.write)
             myPLL.print()
 
     while True:
