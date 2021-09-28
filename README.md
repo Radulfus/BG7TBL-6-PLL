@@ -23,7 +23,7 @@ EXAMPLE: List all frequencies:
 
 ./sixpll.sh -l
 
-BG7TPL 6-PLL tool
+BG7TBL 6-PLL tool
 
 Frequencies stored in EEPROM
 
@@ -52,7 +52,7 @@ EXAMPLE: Write a frequency
 
 ./sixpll.sh -w OUT1:016000000
 
-BG7TPL 6-PLL tool
+BG7TBL 6-PLL tool
 
 Writing frequencies to EEPROM
 
