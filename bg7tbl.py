@@ -51,10 +51,10 @@ class SixPLL(object):
             print("Writing frequencies to EEPROM")
             print("-----------------------------")
         else:
-            print("Channel or Frequency typo. Aborting...")
+            print("Channel or frequency typo. Aborting...")
             sys.exit(1)
 
-        self.__sendReadCmd__()
+        self.send_read_cmd()
         # filling dictionary
         for c in "OUT1:", "OUT2:", "OUT3:", "OUT4:", "OUT5:", "OUT6:":
             rawdata = self.ser.read_until(EOL, RAW_DATA_LENGTH)
@@ -67,7 +67,7 @@ class SixPLL(object):
                 item = {c: rawstr[5:14]}
                 self.sixpllDict.update(item)
 
-        self.__sendWriteCmd__()
+        self.send_write_cmd()
         # program EEPROM
         for key, value in self.sixpllDict.items():
             valuebytes = bytes(value, encoding='utf-8')
@@ -77,7 +77,7 @@ class SixPLL(object):
         print()
 
     def print(self):
-        self.__sendReadCmd__()
+        self.send_read_cmd()
         print("Frequencies stored in EEPROM")
         print("----------------------------")
         print("PLL   Mhz kHz Hz")
@@ -90,11 +90,11 @@ class SixPLL(object):
         print()
         print("That's it...")
 
-    def __sendReadCmd__(self):
+    def send_read_cmd(self):
         self.ser.reset_input_buffer()
         self.ser.write(READ_CMD)
 
-    def __sendWriteCmd__(self):
+    def send_write_cmd(self):
         self.ser.reset_output_buffer()
         self.ser.write(WRITE_CMD)
 
@@ -102,15 +102,12 @@ class SixPLL(object):
         # check data length
         if len(raw_data) != RAW_DATA_LENGTH-2:
             return False
-
         # check channel descriptor
         if raw_data[0:3] != 'OUT' or raw_data[4] != ':':
             return False
-
         # check Frequency
         if not raw_data[5:].isdecimal():
             return False
-
         return True
 
     def __del__(self):
