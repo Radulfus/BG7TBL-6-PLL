@@ -50,20 +50,21 @@ class SixPLL(object):
 
     def gui(self):
         window = Tk()
-        window.title("BG7TBL 6-PLL")
-        i = 0
+        window.title("BG7TBL 10M-6-PLL")
+        i = 2
         self.send_read_cmd()
-        while i < CHANNELS:
+        while i < CHANNELS+2:
             rawdata = self.ser.read_until(EOL, RAW_DATA_LENGTH)
             rawstr = str(rawdata)[2:RAW_DATA_LENGTH]
-            Label(window, text=rawstr[0:5] + " ").grid(row=i)
-            Label(window, text="Hz").grid(row=i, column=2)
-            self.entry_field[i] = Entry(window)
-            self.entry_field[i].grid(row=i, column=1)
-            self.entry_field[i].insert(10, rawstr[5:14])
+            Label(window, text="Frequency programming").grid(row=0, column=1)
+            Label(window, text=rawstr[0:5] + " ").grid(row=i, column=0, sticky=E)
+            Label(window, text="Hz").grid(row=i, column=2, sticky=W)
+            self.entry_field[i-2] = Entry(window)
+            self.entry_field[i-2].grid(row=i, column=1, pady=3)
+            self.entry_field[i-2].insert(10, rawstr[5:14])
             i = i + 1
-        Button(window, text='Quit', command=window.quit).grid(row=6, column=0, sticky=W, pady=4)
-        Button(window, text='Write', command=self.gui_write).grid(row=6, column=2, sticky=W, pady=4)
+        Button(window, text='Quit', fg="red", command=window.quit).grid(row=8, column=0, sticky=W, pady=10, padx=10)
+        Button(window, text='Write', fg="green", command=self.gui_write).grid(row=8, column=2, sticky=W, pady=10, padx=10)
         window.mainloop()
 
     def gui_write(self):
