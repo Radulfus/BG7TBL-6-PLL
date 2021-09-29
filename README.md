@@ -2,10 +2,8 @@
 Linux tool (command line and GUI) to program the 6-Channel Frequency Adjustable Conversion Board from BG7TBL
 
 Usage:
-
-ralf@T3610:~/PycharmProjects/bg7tpl$ ./sixpll.sh -h
-
-usage: sixpll.sh [-h] [-p PORT] [-l] [-w WRITE] [-g]
+------
+sixpll.sh [-h] [-p PORT] [-l] [-w WRITE] [-g]
 
 optional arguments:
 
