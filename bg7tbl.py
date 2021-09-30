@@ -64,7 +64,8 @@ class SixPLL(object):
             self.entry_field[i-2].insert(10, rawstr[5:14])
             i = i + 1
         Button(window, text='Quit', fg="red", command=window.quit).grid(row=8, column=0, sticky=W, pady=10, padx=10)
-        Button(window, text='Write', fg="green", command=self.gui_write).grid(row=8, column=2, sticky=W, pady=10, padx=10)
+        Button(window, text='Write', fg="green", command=self.gui_write).grid(row=8, column=2, sticky=E, pady=10,
+                                                                              padx=10)
         window.mainloop()
 
     def gui_write(self):
@@ -91,7 +92,7 @@ class SixPLL(object):
             rawdata = self.ser.read_until(EOL, RAW_DATA_LENGTH)
             rawstr = str(rawdata)[2:RAW_DATA_LENGTH]
             if rawstr[0:5] == self.frequency[0:5]:
-                # print("NEW: " + self.frequency)
+                print("PROG: " + self.frequency)
                 item = {c: self.frequency[5:14]}
                 self.sixpllDict.update(item)
             else:
@@ -116,7 +117,7 @@ class SixPLL(object):
         while c < CHANNELS:
             rawdata = self.ser.read_until(EOL, RAW_DATA_LENGTH)
             rawstr = str(rawdata)[2:RAW_DATA_LENGTH]
-            print(rawstr[0:5] + " " + rawstr[5:8] + "." + rawstr[8:11] + "." + rawstr[11:] + "Hz")
+            print(rawstr[0:5] + " " + rawstr[5:8] + "." + rawstr[8:11] + "." + rawstr[11:] + " Hz")
             c = c+1
         print()
         print("That's it...")
