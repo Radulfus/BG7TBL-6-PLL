@@ -1,5 +1,6 @@
 # BG7TBL 10M-6-PLL
-Linux tool (command line and GUI) to program the 6-Channel Frequency Adjustable Conversion Board from BG7TBL
+Linux tool (command line and GUI) to program the 6-Channel Frequency Adjustable Conversion Board from BG7TBL.
+GUI support at master branch only!
 
 Usage:
 ------
