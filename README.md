@@ -1,10 +1,6 @@
 # BG7TBL 10M-6-PLL
 Linux tool (command line and GUI) to program the 6-Channel Frequency Adjustable Conversion Board from BG7TBL.
 
-GUI support at master branch only!
-----------------------------------
--g, --gui             Graphical User Interface
-
 Usage:
 ------
 sixpll.sh [-h] [-p PORT] [-l] [-w WRITE] [-g]
@@ -18,6 +14,10 @@ optional arguments:
 -l, --list            List frequencies from EEPROM
 
 -w WRITE, --write WRITE Write frequency to EEPROM. Format: OUT1:010000000
+
+GUI support at master branch only!
+----------------------------------
+-g, --gui             Graphical User Interface
 
 Change one frequency:
 ---------------------
