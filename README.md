@@ -19,13 +19,13 @@ GUI support at master branch only!
 ----------------------------------
 -g, --gui             Graphical User Interface
 
-Change one frequency:
----------------------
-./sixpll.sh -w OUT1:010000000
-
 List frequenies:
 ----------------
 ./sixpll.sh -l
+
+Change a frequency:
+---------------------
+./sixpll.sh -w OUT1:010000000
 
 Change multiple frequencies:
 ----------------------------
